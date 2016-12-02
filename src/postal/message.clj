@@ -111,7 +111,7 @@
         (cond-> (:content-id part)
                 (.setContentID (str "<" (:content-id part) ">")))
         (cond-> (:file-name part)
-                (.setFileName (:file-name part)))
+                (.setFileName (javax.mail.internet.MimeUtility/encodeText (:file-name part))))
         (cond-> (:description part)
                 (.setDescription (:description part)))))
     (doto (javax.mail.internet.MimeBodyPart.)
